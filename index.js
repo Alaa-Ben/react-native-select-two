@@ -20,7 +20,10 @@ class Select2 extends Component {
         colorTheme: '#16a45f',
         buttonTextStyle: {},
         buttonStyle: {},
-        showSearchBox: true
+        showSearchBox: true,
+        selectIconChecked: 'check-circle-outline', 
+        selectIconUnchecked: 'radiobox-blank',
+        selectIconSize: 20
     }
     state = {
         show: false,
@@ -98,7 +101,7 @@ class Select2 extends Component {
     }
     keyExtractor = (item, idx) => idx.toString();
     renderItem = ({ item, idx }) => {
-        let { colorTheme, isSelectSingle } = this.props;
+        let { colorTheme, isSelectSingle, selectIconChecked, selectIconUnchecked, selectIconSize } = this.props;
         return (
             <TouchableOpacity
                 key={idx}
@@ -109,8 +112,8 @@ class Select2 extends Component {
                     {item.name}
                 </Text>
                 <Icon style={styles.itemIcon}
-                    name={item.checked ? 'check-circle-outline' : 'radiobox-blank'}
-                    color={item.checked ? colorTheme : '#777777'} size={20} />
+                    name={item.checked ? selectIconChecked : selectIconUnchecked}
+                    color={item.checked ? colorTheme : '#777777'} size={selectIconSize} />
             </TouchableOpacity>
         );
     }
@@ -129,7 +132,7 @@ class Select2 extends Component {
         let {
             style, modalStyle, title, onSelect, onRemoveItem, popupTitle, colorTheme,
             isSelectSingle, cancelButtonText, selectButtonText, searchPlaceHolderText,
-            selectedTitleStyle, buttonTextStyle, buttonStyle, showSearchBox
+            selectedTitleStyle, buttonTextStyle, buttonStyle, showSearchBox, tagNameSize, tagIconSize
         } = this.props;
         let { show, selectedItem, preSelectedItem } = this.state;
         return (
@@ -244,6 +247,8 @@ class Select2 extends Component {
                                                         this.setState({ data, preSelectedItem });
                                                         onRemoveItem && onRemoveItem(selectedIds, selectedObjectItems);
                                                     }}
+                                                    tagNameSize={tagNameSize}
+                                                    tagIconSize={tagIconSize}
                                                     tagName={tag.name} />
                                             );
                                         })

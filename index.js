@@ -170,13 +170,13 @@ class Select2 extends Component {
                                     onFocus={() => {
                                         Animated.spring(this.animatedHeight, {
                                             toValue: INIT_HEIGHT + (Platform.OS === 'ios' ? height * 0.2 : 0),
-                                            friction: 7
+                                            friction: 7, useNativeDriver: true
                                         }).start();
                                     }}
                                     onBlur={() => {
                                         Animated.spring(this.animatedHeight, {
                                             toValue: INIT_HEIGHT,
-                                            friction: 7
+                                            friction: 7, useNativeDriver: true
                                         }).start();
                                     }}
                                 />

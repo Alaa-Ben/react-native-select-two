@@ -132,7 +132,8 @@ class Select2 extends Component {
         let {
             style, modalStyle, title, onSelect, onRemoveItem, popupTitle, colorTheme,
             isSelectSingle, cancelButtonText, selectButtonText, searchPlaceHolderText,
-            selectedTitleStyle, buttonTextStyle, buttonStyle, showSearchBox, tagNameSize, tagIconSize
+            selectedTitleStyle, buttonTextStyle, buttonStyle, showSearchBox, tagNameSize, tagIconSize,
+            popupTitleStyle = {}
         } = this.props;
         let { show, selectedItem, preSelectedItem } = this.state;
         return (
@@ -153,7 +154,7 @@ class Select2 extends Component {
                     isVisible={show}>
                     <Animated.View style={[styles.modalContainer, modalStyle, { height: this.animatedHeight }]}>
                         <View>
-                            <Text style={[styles.title, this.defaultFont, { color: colorTheme }]}>
+                            <Text style={[styles.title, this.defaultFont, { color: colorTheme }, popupTitleStyle]}>
                                 {popupTitle || title}
                             </Text>
                         </View>

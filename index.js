@@ -282,7 +282,7 @@ const styles = StyleSheet.create({
     },
     listOption: {
         paddingHorizontal: 24,
-        paddingTop: 1, marginTop: 16
+        paddingTop: 1, marginVertical: 16
     },
     itemWrapper: {
         borderBottomWidth: 1, borderBottomColor: '#eaeaea',

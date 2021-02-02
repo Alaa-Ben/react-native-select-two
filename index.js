@@ -1,6 +1,6 @@
 //import liraries
 import React, { Component } from 'react';
-import { Text, StyleSheet, TouchableOpacity, View, FlatList, TextInput, Dimensions, Animated, Platform } from 'react-native';
+import { Text, StyleSheet, TouchableOpacity, View, FlatList, TextInput, Dimensions } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Modal from 'react-native-modal';
 import Button from './lib/Button';
@@ -8,8 +8,6 @@ import TagItem from './lib/TagItem';
 import utilities from './lib/utilities';
 import PropTypes from 'prop-types';
 
-const { height } = Dimensions.get('window');
-const INIT_HEIGHT = height * 0.6;
 // create a component
 class Select2 extends Component {
     static defaultProps = {
@@ -32,7 +30,6 @@ class Select2 extends Component {
         data: [],
         keyword: ''
     }
-    animatedHeight = new Animated.Value(INIT_HEIGHT);
 
     componentDidMount() {
         this.init();
@@ -152,7 +149,7 @@ class Select2 extends Component {
                     animationOutTiming={300}
                     hideModalContentWhileAnimating
                     isVisible={show}>
-                    <Animated.View style={[styles.modalContainer, modalStyle, { height: this.animatedHeight }]}>
+                    <View style={[styles.modalContainer, modalStyle]}>
                         <View>
                             <Text style={[styles.title, this.defaultFont, { color: colorTheme }, popupTitleStyle]}>
                                 {popupTitle || title}
@@ -168,18 +165,6 @@ class Select2 extends Component {
                                     placeholder={searchPlaceHolderText}
                                     selectionColor={colorTheme}
                                     onChangeText={keyword => this.setState({ keyword })}
-                                    onFocus={() => {
-                                        Animated.spring(this.animatedHeight, {
-                                            toValue: INIT_HEIGHT + (Platform.OS === 'ios' ? height * 0.2 : 0),
-                                            friction: 7, useNativeDriver: true
-                                        }).start();
-                                    }}
-                                    onBlur={() => {
-                                        Animated.spring(this.animatedHeight, {
-                                            toValue: INIT_HEIGHT,
-                                            friction: 7, useNativeDriver: true
-                                        }).start();
-                                    }}
                                 />
                                 : null
                         }
@@ -218,7 +203,7 @@ class Select2 extends Component {
                                 textStyle={buttonTextStyle}
                                 style={[styles.button, buttonStyle, { marginLeft: 5, marginRight: 10 }]} />
                         </View>
-                    </Animated.View>
+                    </View>
                 </Modal>
                 {
                     preSelectedItem.length > 0

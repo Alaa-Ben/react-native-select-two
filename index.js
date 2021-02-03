@@ -117,7 +117,7 @@ class Select2 extends Component {
     renderEmpty = () => {
         let { listEmptyTitle, emptyTitleStyle = {} } = this.props;
         return (
-            <Text style={[styles.empty, this.defaultFont, {emptyTitleStyle}]}>
+            <Text style={[styles.empty, this.defaultFont, emptyTitleStyle]}>
                 {listEmptyTitle}
             </Text>
         );

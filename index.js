@@ -130,7 +130,7 @@ class Select2 extends Component {
             style, modalStyle, title, onSelect, onRemoveItem, popupTitle, colorTheme,
             isSelectSingle, cancelButtonText, selectButtonText, searchPlaceHolderText,
             selectedTitleStyle, buttonTextStyle, buttonStyle, showSearchBox, tagNameSize, tagIconSize,
-            popupTitleStyle = {}
+            popupTitleStyle = {}, searchStyle = {}
         } = this.props;
         let { show, selectedItem, preSelectedItem } = this.state;
         return (
@@ -161,7 +161,7 @@ class Select2 extends Component {
                                 ? <TextInput
                                     underlineColorAndroid='transparent'
                                     returnKeyType='done'
-                                    style={[styles.inputKeyword, this.defaultFont]}
+                                    style={[styles.inputKeyword, this.defaultFont, searchStyle]}
                                     placeholder={searchPlaceHolderText}
                                     selectionColor={colorTheme}
                                     onChangeText={keyword => this.setState({ keyword })}

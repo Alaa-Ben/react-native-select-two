@@ -291,9 +291,7 @@ const styles = StyleSheet.create({
     itemText: {
         fontSize: 16, color: '#333', flex: 1
     },
-    itemIcon: {
-        width: 30, textAlign: 'right'
-    },
+    itemIcon: { textAlign: 'right'},
     empty: {
         fontSize: 16, color: 'gray', alignSelf: 'center', textAlign: 'center', paddingTop: 16
     }
